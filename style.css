@@ -163,9 +163,11 @@ body.light-theme .toggle-mode:hover {
     transform: scale(0.95);
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
+    display: none;
 }
 
 .card.show {
+    display: block;
     transform: scale(1);
     opacity: 1;
 }
