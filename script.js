@@ -1,7 +1,3 @@
-function toggleMode() {
-    document.body.classList.toggle("light-theme");
-}
-
 const PERSONALITY_REGISTRY = {
     "ISTJ": { desc: "Practical and organized. Focuses on details, structural integrity, and deep reliability.", percent: "11–14%", color: "#1abc9c" },
     "ISFJ": { desc: "Compassionate and loyal. Dedicated to protecting environments and supporting others meticulously.", percent: "9–14%", color: "#2ecc71" },
@@ -114,6 +110,9 @@ function updateProgressBar() {
 }
 
 function processAssessmentResults() {
+    const container = document.getElementById("quiz-container");
+    if (container) container.innerHTML = "";
+
     const metricScores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
     userAnswersCollection.forEach(vector => metricScores[vector]++);
 
@@ -145,4 +144,11 @@ function processAssessmentResults() {
 document.addEventListener("DOMContentLoaded", () => {
     renderQuestion();
     updateProgressBar();
+
+    const themeBtn = document.getElementById("theme-btn");
+    if (themeBtn) {
+        themeBtn.addEventListener("click", () => {
+            document.body.classList.toggle("light-theme");
+        });
+    }
 });
